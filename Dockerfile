@@ -1,7 +1,10 @@
-FROM ubuntu:14.04
-RUN apt-get update 
-RUN apt-get install -y nginx
+FROM java:7 
 
-EXPOSE 80 443
+WORKDIR /home/root/javahelloworld 
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY src src RUN mkdir bin 
+
+RUN javac -d bin src/HelloWorld.java
+RUN touch a RUN touch b
+ENTRYPOINT ["java","-cp","bin","HelloWorld"]
+
